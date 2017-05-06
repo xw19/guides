@@ -56,7 +56,7 @@ Signature is a unique key that identifies the service which creates the header. 
 Enough theory, it's time for practice. The first step is to create a new Rails 5 API-only application:
 
 ```bash
-rails _5.0.0.beta3_ new api-app --api
+rails _5.0.2_ new api-app --api
 ```
 
 
@@ -245,7 +245,7 @@ class AuthorizeApiRequest
   attr_reader :headers
 
   def user
-    @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
+    @user ||= User.find(decoded_auth_token["user_id"]) if decoded_auth_token
     @user || errors.add(:token, 'Invalid token') && nil
   end
 
